@@ -21,7 +21,7 @@ const PokemonsList = () => {
   const selectedPokemonIndex = useSelector(
     (state: RootState) => state.pokemon.selectedPokemonIndex
   );
-  const { data, isError, isLoading, isSuccess } = useGetPokemonsListQuery({
+  const { data, currentData, isError, isFetching } = useGetPokemonsListQuery({
     limit: numberPokemonPerPage,
     offset: (pageIndex - 1) * numberPokemonPerPage,
   });
@@ -39,54 +39,58 @@ const PokemonsList = () => {
 
   return (
     <div className="pokemon-list__container">
-      <h2>Pokemons List ({isSuccess && data.pokemonsCount})</h2>
-      {isLoading && <div>loading</div>}
-      {isError && <div>error</div>}
-      {isSuccess && (
+      <h2>Pokemons List ({data?.pokemonsCount})</h2>
+      <div>
+        {/* pokemons numbers per page */}
+        Pokemons per page:
+        <select
+          className="pokemon-list__pokemons-per-page"
+          value={numberPokemonPerPage}
+          onChange={handleNumberPokemonPerPageChange}
+        >
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="40">40</option>
+          <option value="50">50</option>
+        </select>
+      </div>
+
+      {isFetching && <div className="pokemon-list__alert-message">Loading...</div>}
+      {isError && <div className="pokemon-list__alert-message">Error</div>}
+      {!isFetching && !isError && (
         <div>
-          <div>
-            {/* pokemons numbers per page */}
-            Pokemons per page:
-            <select
-              className="pokemon-list__pokemons-per-page"
-              value={numberPokemonPerPage}
-              onChange={handleNumberPokemonPerPageChange}
-            >
-              <option value="10">10</option>
-              <option value="20">20</option>
-              <option value="30">30</option>
-              <option value="40">40</option>
-              <option value="50">50</option>
-            </select>
-          </div>
           {/* pokemons list */}
           <table className="pokemon-list__list-container">
-            {data.pokemonsList.map((pokemon: PokemonItem) => (
-              <tr
-                onClick={() => setSelectedPokemon(pokemon.index)}
-                className={
-                  selectedPokemonIndex === pokemon.index
-                    ? "pokemon-list__active-pokemon"
-                    : ""
-                }
-              >
-                <td>{pokemon.index}</td>
-                <td>{pokemon.name}</td>
-              </tr>
-            ))}
+            <tbody>
+              {currentData?.pokemonsList.map((pokemon: PokemonItem) => (
+                <tr
+                  key={pokemon.index}
+                  onClick={() => setSelectedPokemon(pokemon.index)}
+                  className={
+                    selectedPokemonIndex === pokemon.index
+                      ? "pokemon-list__active-pokemon"
+                      : ""
+                  }
+                >
+                  <td>{pokemon.index}</td>
+                  <td>{pokemon.name}</td>
+                </tr>
+              ))}
+            </tbody>
           </table>
           {/* paginator */}
           <div className="pokemon-list__paginator">
             <button
               onClick={() => dispatch(previousPage())}
-              disabled={!data.previousUrl}
+              disabled={!currentData?.previousUrl}
             >
               previous
             </button>
             {pageIndex}
             <button
               onClick={() => dispatch(nextPage())}
-              disabled={!data.nextUrl}
+              disabled={!currentData?.nextUrl}
             >
               next
             </button>
