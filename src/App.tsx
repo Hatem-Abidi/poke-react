@@ -18,7 +18,11 @@ function App() {
         <div>
           <PokemonsList />
         </div>
-        <div>{selectedPokemonIndex && <Pokemon />}</div>
+        <div>
+          <div className="pokemon-react__pokemon-container">
+            {selectedPokemonIndex && <Pokemon />}
+          </div>
+        </div>
       </div>
     </div>
   );
