@@ -18,6 +18,9 @@ const PokemonsList = () => {
   const pageIndex = useSelector(
     (state: RootState) => state.pokemonsList.pageIndex
   );
+  const selectedPokemonIndex = useSelector(
+    (state: RootState) => state.pokemon.selectedPokemonIndex
+  );
   const { data, isError, isLoading, isSuccess } = useGetPokemonsListQuery({
     limit: numberPokemonPerPage,
     offset: (pageIndex - 1) * numberPokemonPerPage,
@@ -35,15 +38,17 @@ const PokemonsList = () => {
   const dispatch = useDispatch();
 
   return (
-    <div>
-      <h2>Pokemons List:</h2>
+    <div className="pokemon-list__container">
+      <h2>Pokemons List ({isSuccess && data.pokemonsCount})</h2>
       {isLoading && <div>loading</div>}
       {isError && <div>error</div>}
       {isSuccess && (
         <div>
           <div>
             {/* pokemons numbers per page */}
+            Pokemons per page:
             <select
+              className="pokemon-list__pokemons-per-page"
               value={numberPokemonPerPage}
               onChange={handleNumberPokemonPerPageChange}
             >
@@ -55,17 +60,23 @@ const PokemonsList = () => {
             </select>
           </div>
           {/* pokemons list */}
-          {data.pokemonsList.map((pokemon: PokemonItem) => (
-            <>
-              <button onClick={() => setSelectedPokemon(pokemon.index)}>
-                {pokemon.name}
-              </button>
-              <br />
-            </>
-          ))}
-          <br />
+          <table className="pokemon-list__list-container">
+            {data.pokemonsList.map((pokemon: PokemonItem) => (
+              <tr
+                onClick={() => setSelectedPokemon(pokemon.index)}
+                className={
+                  selectedPokemonIndex === pokemon.index
+                    ? "pokemon-list__active-pokemon"
+                    : ""
+                }
+              >
+                <td>{pokemon.index}</td>
+                <td>{pokemon.name}</td>
+              </tr>
+            ))}
+          </table>
           {/* paginator */}
-          <div>
+          <div className="pokemon-list__paginator">
             <button
               onClick={() => dispatch(previousPage())}
               disabled={!data.previousUrl}

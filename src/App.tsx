@@ -5,7 +5,7 @@ import { RootState } from "./state/store";
 import Pokemon from "./components/pokemon/Pokemon";
 import PokemonsList from "./components/pokemonsList/PokemonsList";
 
-import "./App.css";
+import "./App.scss";
 
 function App() {
   const selectedPokemonIndex = useSelector(
@@ -14,8 +14,12 @@ function App() {
   return (
     <div>
       <h1>Pokemon React</h1>
-      <PokemonsList />
-      {selectedPokemonIndex && <Pokemon />}
+      <div className="pokemon-react__container">
+        <div>
+          <PokemonsList />
+        </div>
+        <div>{selectedPokemonIndex && <Pokemon />}</div>
+      </div>
     </div>
   );
 }
