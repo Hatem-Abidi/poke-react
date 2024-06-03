@@ -1,0 +1,9 @@
+.pokemon-react__container {
+  display: flex;
+  width: 100%;
+
+  & > div {
+    flex-grow: 1;
+    width: 0;
+  }
+}

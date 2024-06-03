@@ -1,0 +1,48 @@
+.pokemon-list__container {
+  padding: 16px;
+
+  .pokemon-list__pokemons-per-page {
+    margin-left: 8px;
+  }
+
+  .pokemon-list__list-container {
+    width: 100%;
+    margin-top: 16px;
+    border-spacing: 0;
+
+    tr {
+      cursor: pointer;
+
+      &.pokemon-list__active-pokemon {
+        background-color: lightblue;
+      }
+
+      &:hover {
+        background-color: grey;
+      }
+
+      td {
+        padding: 8px 16px;
+        border-bottom: 1px solid grey;
+
+        &:first-child {
+          width: 0;
+          font-weight: bold;
+          min-width: fit-content;
+        }
+      }
+    }
+  }
+
+  .pokemon-list__paginator {
+    gap: 16px;
+    display: flex;
+    margin-top: 16px;
+    align-items: center;
+    justify-content: center;
+
+    button {
+      padding: 4px 8px;
+    }
+  }
+}
