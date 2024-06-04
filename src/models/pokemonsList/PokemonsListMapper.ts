@@ -4,7 +4,7 @@ import {
   PokemonItemRaw,
   PokemonPageRaw,
 } from "./PokemonsList";
-import { toCapitalize } from "../../utils/utils";
+import { toCapitalize } from "../../util/util";
 
 const pokemonsListMapper = (pokemonsList: PokemonPageRaw): PokemonPage => ({
   pokemonsCount: pokemonsList.count,

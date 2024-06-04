@@ -1,4 +1,4 @@
-import { toCapitalize } from "../../utils/utils";
+import { toCapitalize } from "../../util/util";
 import { Pokemon, PokemonRaw, PokemonTypeRaw } from "./Pokemon";
 
 const pokemonMapper = (pokemon: PokemonRaw): Pokemon => ({
