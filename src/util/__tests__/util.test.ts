@@ -1,4 +1,4 @@
-import { toCapitalize } from "../utils";
+import { toCapitalize } from "../util";
 
 const rawName: string = "bulbasaur";
 const name: string = "Bulbasaur";
