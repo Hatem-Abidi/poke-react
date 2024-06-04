@@ -1,13 +1,12 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+import config from "../config.json";
 import pokemonMapper from "../models/pokemon/PokemonMapper";
 import pokemonsListMapper from "../models/pokemonsList/PokemonsListMapper";
 
-const POKEAPI_BASE_URL = "https://pokeapi.co/api/v2";
-
 export const pokemonsApi = createApi({
   reducerPath: "pokemonsApi",
-  baseQuery: fetchBaseQuery({ baseUrl: POKEAPI_BASE_URL }),
+  baseQuery: fetchBaseQuery({ baseUrl: config.POKEAPI_BASE_URL }),
   endpoints: (builder) => ({
     /**
      * get pokemon details using the id of the selected pokemon
