@@ -1,9 +1,10 @@
+import React from "react";
 import type { ReactNode } from "react";
 import { Provider } from "react-redux";
 import { renderHook } from "@testing-library/react";
 
 import { store } from "../../state/store";
-import { useGetPokemonQuery, useGetPokemonsListQuery } from "../pokemonApi";
+import { useGetPokemonQuery, useGetPokemonsListQuery } from "../pokemonsApi";
 
 function Wrapper(props: { children: ReactNode }) {
   return <Provider store={store}>{props.children}</Provider>;
