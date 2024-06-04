@@ -1,13 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { RootState } from "./state/store";
-import Pokemon from "./components/pokemon/Pokemon";
-import PokemonsList from "./components/pokemonsList/PokemonsList";
+import { RootState } from "../../state/store";
+import Pokemon from "../pokemon/Pokemon";
+import PokemonsList from "../pokemonsList/PokemonsList";
 
-import "./App.scss";
+import "./PokemonApp.scss";
 
-function App() {
+function PokemonApp() {
   const selectedPokemonIndex = useSelector(
     (state: RootState) => state.pokemon.selectedPokemonIndex
   );
@@ -28,4 +28,4 @@ function App() {
   );
 }
 
-export default App;
+export default PokemonApp;

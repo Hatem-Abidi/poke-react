@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import pokemonMapper from "../models/pokemon/PokemonMapper";
-import pokemonListMapper from "../models/pokemonsList/PokemonsListMapper";
+import pokemonsListMapper from "../models/pokemonsList/PokemonsListMapper";
 
 const POKEAPI_BASE_URL = "https://pokeapi.co/api/v2";
 
@@ -29,7 +29,7 @@ export const pokemonApi = createApi({
         url: `pokemon`,
         params,
       }),
-      transformResponse: pokemonListMapper,
+      transformResponse: pokemonsListMapper,
     }),
   }),
 });

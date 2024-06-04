@@ -6,11 +6,11 @@ import {
 } from "./PokemonsList";
 import { toCapitalize } from "../../utils/utils";
 
-const pokemonListMapper = (pokemonList: PokemonPageRaw): PokemonPage => ({
-  pokemonsCount: pokemonList.count,
-  nextUrl: pokemonList.next,
-  previousUrl: pokemonList.previous,
-  pokemonsList: pokemonList.results.map(
+const pokemonsListMapper = (pokemonsList: PokemonPageRaw): PokemonPage => ({
+  pokemonsCount: pokemonsList.count,
+  nextUrl: pokemonsList.next,
+  previousUrl: pokemonsList.previous,
+  pokemonsList: pokemonsList.results.map(
     (pokemon: PokemonItemRaw): PokemonItem => {
       const urlSplitted = pokemon.url.split("/");
       const index = parseInt(urlSplitted[urlSplitted.length - 2]);
@@ -22,4 +22,4 @@ const pokemonListMapper = (pokemonList: PokemonPageRaw): PokemonPage => ({
   ),
 });
 
-export default pokemonListMapper;
+export default pokemonsListMapper;

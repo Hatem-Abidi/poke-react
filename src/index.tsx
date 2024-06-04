@@ -2,7 +2,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import ReactDOM from "react-dom/client";
 
-import App from "./App";
+import PokemonApp from "./components/pokemonApp/PokemonApp";
 import { store } from "./state/store";
 import reportWebVitals from "./reportWebVitals";
 
@@ -14,7 +14,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <PokemonApp />
     </Provider>
   </React.StrictMode>
 );

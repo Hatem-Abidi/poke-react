@@ -7,7 +7,7 @@ import {
   previousPage,
   setPage,
 } from "../../state/pokemonsList/pokemonsListSlice";
-import { useGetPokemonsListQuery } from "../../services/PokemonApi";
+import { useGetPokemonsListQuery } from "../../services/pokemonApi";
 import { PokemonItem } from "../../models/pokemonsList/PokemonsList";
 import { setSelectedPokemonIndex } from "../../state/pokemon/pokemonSlice";
 
