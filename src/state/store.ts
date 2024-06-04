@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import { pokemonApi } from "../services/PokemonApi";
+import { pokemonApi } from "../services/pokemonApi";
 import pokemonReduce from "./pokemon/pokemonSlice";
 import pokemonsListReducer from "./pokemonsList/pokemonsListSlice";
 

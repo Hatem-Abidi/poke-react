@@ -1,7 +1,7 @@
 export interface PokemonPage {
   pokemonsCount: number;
-  nextUrl?: string;
-  previousUrl?: string;
+  nextUrl: string | null;
+  previousUrl: string | null;
   pokemonsList: PokemonsList;
 }
 
@@ -14,8 +14,8 @@ export interface PokemonItem {
 
 export interface PokemonPageRaw {
   count: number;
-  next?: string;
-  previous?: string;
+  next: string | null;
+  previous: string | null;
   results: PokemonsListRaw;
 }
 
