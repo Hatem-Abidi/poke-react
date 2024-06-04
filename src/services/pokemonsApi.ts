@@ -5,8 +5,8 @@ import pokemonsListMapper from "../models/pokemonsList/PokemonsListMapper";
 
 const POKEAPI_BASE_URL = "https://pokeapi.co/api/v2";
 
-export const pokemonApi = createApi({
-  reducerPath: "pokemonApi",
+export const pokemonsApi = createApi({
+  reducerPath: "pokemonsApi",
   baseQuery: fetchBaseQuery({ baseUrl: POKEAPI_BASE_URL }),
   endpoints: (builder) => ({
     /**
@@ -34,4 +34,4 @@ export const pokemonApi = createApi({
   }),
 });
 
-export const { useGetPokemonQuery, useGetPokemonsListQuery } = pokemonApi;
+export const { useGetPokemonQuery, useGetPokemonsListQuery } = pokemonsApi;

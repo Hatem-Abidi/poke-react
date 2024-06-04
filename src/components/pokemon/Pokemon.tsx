@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import { RootState } from "../../state/store";
-import { useGetPokemonQuery } from "../../services/pokemonApi";
+import { useGetPokemonQuery } from "../../services/pokemonsApi";
 
 import "./Pokemon.scss";
 
